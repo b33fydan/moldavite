@@ -36,7 +36,7 @@ export function CodexChapterNav() {
   const setActiveSection = useSimStore((s) => s.setActiveSection)
 
   return (
-    <aside className="fixed left-3 top-20 bottom-20 z-20 flex w-64 flex-col overflow-hidden rounded-2xl border border-[#1e2028] bg-[#080b12]/88 p-3 backdrop-blur-md">
+    <aside data-testid="codex-chapter-panel" className="fixed left-3 right-3 top-20 z-20 flex h-40 w-auto flex-col overflow-hidden rounded-2xl border border-[#1e2028] bg-[#080b12]/88 p-3 backdrop-blur-md lg:right-auto lg:bottom-20 lg:h-auto lg:w-64">
       <div className="mb-3 shrink-0 text-[10px] uppercase tracking-[0.28em] text-[#55d6ff]">Mirror Stack</div>
       <div className="flex min-h-0 flex-1 flex-col gap-1.5 overflow-y-auto pr-1">
         {CODEX_SECTIONS.map((section, index) => (
@@ -77,7 +77,7 @@ export function CodexExplanationPanel() {
   const selectedInsight = selectedMirror ? MIRROR_COPY[selectedMirror] : selectedNode ? NODE_COPY[selectedNode] : null
 
   return (
-    <aside className="fixed right-3 top-20 bottom-20 z-20 flex w-80 flex-col overflow-hidden rounded-2xl border border-[#1e2028] bg-[#080b12]/88 p-4 backdrop-blur-md">
+    <aside data-testid="codex-concept-panel" className="fixed bottom-20 left-3 right-3 z-20 flex h-64 w-auto flex-col overflow-hidden rounded-2xl border border-[#1e2028] bg-[#080b12]/88 p-4 backdrop-blur-md lg:left-auto lg:top-20 lg:bottom-20 lg:h-auto lg:w-80">
       <div className="mb-3 flex shrink-0 items-center justify-between gap-3">
         <div className="text-[10px] uppercase tracking-[0.28em] text-[#55d6ff]">Concept panel</div>
         <button onClick={toggleExplanationMode} className="rounded-full border border-[#1e2028] px-3 py-1 text-[10px] uppercase tracking-wide text-[#f5f7fb] hover:border-[#55d6ff]">
@@ -132,7 +132,7 @@ export function FormulaStrip() {
   const setActiveSection = useSimStore((s) => s.setActiveSection)
 
   return (
-    <div className="fixed bottom-3 left-1/2 z-20 flex max-w-[92vw] -translate-x-1/2 items-center gap-2 overflow-x-auto rounded-2xl border border-[#1e2028] bg-[#080b12]/90 px-4 py-3 font-mono text-xs text-[#777b86] backdrop-blur-md">
+    <div data-testid="codex-formula-strip" className="fixed bottom-3 left-3 right-3 z-20 flex max-w-none items-center gap-2 overflow-x-auto rounded-2xl border border-[#1e2028] bg-[#080b12]/90 px-4 py-3 font-mono text-xs text-[#777b86] backdrop-blur-md lg:left-1/2 lg:right-auto lg:max-w-[92vw] lg:-translate-x-1/2">
       <button onClick={() => setActiveSection('original-codex')} className={`rounded-lg px-2 py-1 ${activeSection === 'original-codex' ? 'bg-[#6250d8] text-white' : 'hover:text-white'}`}>prompt(prompt(node))</button>
       <span>→</span>
       {FORMULA_PARTS.map((part, i) => (
@@ -147,7 +147,7 @@ export function FormulaStrip() {
 
 export function CodexLegend() {
   return (
-    <div className="fixed left-[17.5rem] top-20 z-20 max-w-xs rounded-2xl border border-[#1e2028] bg-[#080b12]/70 p-3 text-xs text-[#aab3c2] backdrop-blur-md">
+    <div className="fixed left-[17.5rem] top-20 z-20 hidden max-w-xs rounded-2xl border border-[#1e2028] bg-[#080b12]/70 p-3 text-xs text-[#aab3c2] backdrop-blur-md xl:block">
       <div className="mb-1 text-[10px] uppercase tracking-[0.22em] text-[#55d6ff]">Symbol legend</div>
       <div>Sphere = current system state / belief / memory / threat model</div>
       <div>Rings = tensor depth or defensive thresholds</div>
@@ -158,11 +158,11 @@ export function CodexLegend() {
 
 export function CodexExplainerOverlay() {
   return (
-    <>
+    <div data-testid="codex-chrome">
       <CodexChapterNav />
       <CodexLegend />
       <CodexExplanationPanel />
       <FormulaStrip />
-    </>
+    </div>
   )
 }
