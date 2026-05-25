@@ -25,4 +25,10 @@ export const SCENE_ASSETS: Record<SceneId, AssetDef[]> = {
     { id: 'capsule', label: 'Stem', icon: '⬮' },
     { id: 'cluster', label: 'Node', icon: '⁘' },
   ],
+  codex: [
+    { id: 'sphere', label: 'State', icon: '◎' },
+    { id: 'triangle', label: 'Signal', icon: '◇' },
+    { id: 'capsule', label: 'Policy', icon: '⬮' },
+    { id: 'cluster', label: 'Mirror', icon: '⁘' },
+  ],
 }
