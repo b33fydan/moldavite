@@ -5,6 +5,7 @@ import { useSimStore } from '../state/useSimStore'
 import { MagnetScene } from '../scenes/magnet/MagnetScene'
 import { FogScene } from '../scenes/fog/FogScene'
 import { MeshGardenScene } from '../scenes/meshGarden/MeshGardenScene'
+import { CodexScene } from '../scenes/codex/CodexScene'
 
 function ActiveScene() {
   const activeScene = useSimStore((s) => s.activeScene)
@@ -16,6 +17,8 @@ function ActiveScene() {
       return <FogScene />
     case 'meshGarden':
       return <MeshGardenScene />
+    case 'codex':
+      return <CodexScene />
   }
 }
 

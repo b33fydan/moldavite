@@ -1,0 +1,9 @@
+node_modules
+npm-debug.log
+dist
+.git
+.github
+.hermes
+test-results
+playwright-report
+.DS_Store
